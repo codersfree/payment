@@ -1,0 +1,27 @@
+.form-group{
+    @apply mb-6;
+}
+
+.form-label{
+    @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
+}
+
+.form-control{
+    @apply appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-400;
+}
+
+.form-select{
+    @apply appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-400;
+}
+
+.is-invalid{
+    @apply border-red-500 focus:border-red-500;
+}
+
+.form-text{
+    @apply text-gray-600 text-xs italic;
+}
+
+.invalid-feedback{
+    @apply text-red-500 text-xs italic;
+}

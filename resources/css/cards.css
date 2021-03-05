@@ -1,0 +1,19 @@
+.card{
+    @apply rounded overflow-hidden shadow-lg bg-white;
+}
+
+.card-body, .card-footer, .card-header{
+    @apply px-6 py-4;
+}
+
+.card-footer, .card-header{
+    @apply bg-gray-50;
+}
+
+.card-title{
+    @apply font-bold text-xl mb-2;
+}
+
+.card-text{
+    @apply text-gray-700 text-base;
+}
