@@ -6,6 +6,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BillingController;
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,9 +21,11 @@ use App\Http\Controllers\BillingController;
 
 Route::get('/', [ProductController::class, 'index'])->name('home');
 
+Route::get('products/{product}/pay', [ProductController::class, 'pay'])->name('products.pay');
+
 Route::get('articles', [ArticleController::class, 'index'])->name('articles.index');
 
-Route::get('articles/{article}', [ArticleController::class, 'show'])->middleware('subscription')->name('articles.show');
+Route::get('articles/{article}', [ArticleController::class, 'show'])->middleware('subscription', 'auth')->name('articles.show');
 
 Route::get('billing', [BillingController::class, 'index'])->middleware('auth')->name('billing.index');
 
@@ -29,3 +33,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/user/invoice/{invoice}', function (Request $request, $invoiceId) {
+    return $request->user()->downloadInvoice($invoiceId, [
+        'vendor' => 'Your Company',
+        'product' => 'Your Product',
+    ]);
+});

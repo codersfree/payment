@@ -6,6 +6,7 @@
         @if (auth()->user()->subscribed($name))
             @if (auth()->user()->subscribedToPlan($price, $name))
 
+                {{-- Reanudar --}}
                 @if (auth()->user()->subscription($name)->onGracePeriod())
                     
                     <button wire:click="resuminSubscription('{{$name}}')"

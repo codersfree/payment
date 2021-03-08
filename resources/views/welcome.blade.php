@@ -11,7 +11,7 @@
                     <div class="px-4 py-2 bg-gray-900 flex justify-between items-center">
                         <p class="text-gray-200 font-bold text-xl">{{$product->price}} USD</p>
 
-                        <a href="" class="btn btn-secondary">Comprar</a>
+                        <a href="{{route('products.pay', $product)}}" class="btn btn-secondary">Comprar</a>
                     </div>
 
                     <img class="h-56 w-full object-cover" src="{{Storage::url($product->image)}}" alt="">
