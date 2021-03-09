@@ -6,6 +6,8 @@ use Livewire\Component;
 
 use App\Models\Product;
 
+use Exception;
+
 class ProductPay extends Component
 {
 
@@ -23,8 +25,14 @@ class ProductPay extends Component
     }
 
     public function paymentMethodCreate($paymentMethod){
-        auth()->user()->charge($this->product->price * 100, $paymentMethod);
+        try{
+            auth()->user()->charge($this->product->price * 100, $paymentMethod);
 
-        $this->emit('resetStripe');
+            $this->emit('resetStripe');
+        } catch (Exception $e){
+
+            $this->emit('errorPayment');
+
+        }
     }
 }

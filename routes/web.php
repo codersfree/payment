@@ -21,7 +21,7 @@ use Illuminate\Http\Request;
 
 Route::get('/', [ProductController::class, 'index'])->name('home');
 
-Route::get('products/{product}/pay', [ProductController::class, 'pay'])->name('products.pay');
+Route::get('products/{product}/pay', [ProductController::class, 'pay'])->middleware('auth')->name('products.pay');
 
 Route::get('articles', [ArticleController::class, 'index'])->name('articles.index');
 
