@@ -20,7 +20,10 @@ class Subscriptions extends Component
 
         try {
             
-            auth()->user()->newSubscription($name, $price)->create();
+            auth()->user()->newSubscription($name, $price)
+                            ->trialDays(7)
+                            ->create();
+
             $this->emitTo('invoices', 'render');
 
         } catch (IncompletePayment $exception) {
